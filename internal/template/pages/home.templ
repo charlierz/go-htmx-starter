@@ -1,0 +1,11 @@
+package pages
+
+import "github.com/charlierz/go-htmx-starter/internal/template/layout"
+import "github.com/charlierz/go-htmx-starter/internal/template/partials"
+import "github.com/charlierz/go-htmx-starter/internal/model"
+
+templ Home(items []model.Item) {
+	@layout.Base("Home") {
+		@partials.ListItemsTable(items)
+	}
+}

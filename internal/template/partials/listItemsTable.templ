@@ -1,0 +1,44 @@
+package partials
+
+import "github.com/charlierz/go-htmx-starter/internal/model"
+import "time"
+
+templ ListItemsTable(items []model.Item) {
+	<div class="rounded overflow-x-auto">
+		<table class="w-full table-auto text-sm text-left">
+			<thead class="bg-white text-gray-700 border-b">
+				<tr>
+					<th class="px-6 py-2">Name</th>
+					<th class="px-6 py-2">Created At</th>
+					<th class="px-6 py-2">Actions</th>
+				</tr>
+			</thead>
+			<tbody
+ 				hx-target="closest tr"
+ 				hx-swap="outerHTML"
+ 				id="items-tbody"
+ 				class="bg-gray-100 text-gray-700 divide-y"
+			>
+				for _, item := range items {
+					@ItemRow(item)
+				}
+			</tbody>
+		</table>
+	</div>
+}
+
+templ ItemRow(item model.Item) {
+	<tr>
+		<td class="px-6 py-3">{ item.Name }</td>
+		<td class="px-6 py-3">{ item.CreatedAt.Format(time.DateTime) }</td>
+		<td class="px-6 py-2">
+			<button
+ 				hx-delete={ "/items/" + item.Id }
+ 				type="button"
+ 				class="px-4 py-1 rounded duration-150 text-white bg-red-600 hover:bg-red-700 active:bg-red-800"
+			>
+				Delete
+			</button>
+		</td>
+	</tr>
+}

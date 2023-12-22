@@ -1,0 +1,16 @@
+package pages
+
+import "github.com/charlierz/go-htmx-starter/internal/template/layout"
+import "github.com/charlierz/go-htmx-starter/internal/template/partials"
+import "github.com/charlierz/go-htmx-starter/internal/model"
+
+templ ItemListPage(items []model.Item) {
+	@layout.Base("Items") {
+		<div class="pb-6">
+			@partials.ListItemsTable(items)
+		</div>
+		<div>
+			@partials.AddItemForm()
+		</div>
+	}
+}

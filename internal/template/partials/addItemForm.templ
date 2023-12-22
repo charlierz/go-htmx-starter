@@ -1,0 +1,20 @@
+package partials
+
+templ AddItemForm() {
+	<form hx-post="/items" hx-target="#items-tbody" hx-swap="beforeend">
+		<div class="grid grid-cols-4 gap-2">
+			<input
+ 				type="text"
+ 				name="name"
+ 				id="name"
+ 				placeholder="Name"
+ 				required
+ 				class="rounded text-gray-200 bg-transparent focus:border-sky-600"
+			/>
+			<button
+ 				type="submit"
+ 				class="rounded duration-150 text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800"
+			>Add</button>
+		</div>
+	</form>
+}

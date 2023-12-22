@@ -1,0 +1,29 @@
+package layout
+
+templ Base(title string) {
+	<!DOCTYPE html>
+	<html lang="en" class="h-full">
+		<head>
+			<meta charset="utf-8"/>
+			<title>{ title }</title>
+			<link rel="stylesheet" href="/static/tailwind.css"/>
+			<script src="/static/htmx.min.js"></script>
+		</head>
+		<body class="w-full h-full bg-gray-900 text-gray-400">
+			<header class="w-full py-4 bg-gray-950 ">
+				<nav class="container mx-auto px-6 flex items-center justify-between">
+					<a class="text-xl font-semibold text-white" href="/">
+						Go HTMX starter
+					</a>
+					<div class="flex items-center gap-5">
+						<a class="font-medium text-gray-400 hover:text-gray-200" href="/items">Items</a>
+					</div>
+				</nav>
+			</header>
+			<main class="container mx-auto p-6">
+				<h1 class="text-3xl pb-6 text-white">{ title }</h1>
+				{ children... }
+			</main>
+		</body>
+	</html>
+}
